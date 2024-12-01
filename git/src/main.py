@@ -5,13 +5,13 @@ class Order:
     def __init__(self, customer):
         self.customer = customer
         self.dishes = []
-    
+
     def add_dish(self, dish):
         if isinstance(dish, Dish):
             self.dishes.append(dish)
         else:
             raise ValueError("Можно добавлять только объекты класса Dish.")
-    
+
     def remove_dish(self, dish):
         if dish in self.dishes:
             self.dishes.remove(dish)
@@ -20,7 +20,6 @@ class Order:
 
     def calculate_total(self):
         return sum(dish.price for dish in self.dishes)
-
 
     def final_total(self):
         total_after_discount = self.apply_discount()
@@ -52,7 +51,7 @@ class GroupOrder(Order):
         customer_list = ", ".join([customer.name for customer in self.customers])
         dish_list = "\n".join([str(dish) for dish in self.dishes])
         return f"Group Order for {customer_list}:\n{dish_list}\nTotal: ${self.final_total():.2f}"
-  
+
 class Dish:
     def __init__(self, name, price, category):
         self.name = name
