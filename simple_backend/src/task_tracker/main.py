@@ -1,4 +1,4 @@
-from typing import List,Dict
+from typing import List
 from dataclasses import dataclass
 
 from fastapi import FastAPI, HTTPException
