@@ -1,11 +1,11 @@
 from typing import List, Dict
 
-from utils import load_tasks, save_tasks
-from models import Tasks
 from fastapi import FastAPI, HTTPException
 
-app = FastAPI()
+from utils import load_tasks, save_tasks
+from models import Tasks
 
+app = FastAPI()
 tasks: List[Tasks] = load_tasks()
 
 @app.get('/tasks')
@@ -27,10 +27,10 @@ def put_task(task_id: int, update_task: Tasks) -> Tasks:
             tasks[index] = update_task
             save_tasks(tasks)
             return tasks[index]
-    raise HTTPException(status_code=404, detail='Нет таски с таким id')
+    raise HTTPException(status_code=404, detail=f'Нет таски с таким id = {task_id}')
 
 @app.delete('/tasks/{task_id}')
-def delete_task(task_id: int) -> Dict[str,str]:
+def delete_task(task_id: int) -> Dict[str, str]:
     for index, task in enumerate(tasks):
         if task.id == task_id:
             del tasks[index]

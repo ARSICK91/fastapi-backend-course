@@ -75,9 +75,7 @@ class Customer:
     def __str__(self):
         return f"Customer: {self.name}, Membership: {self.membership}"
 
-# Пример использования
 
-# Создаем блюда
 pizza = Dish("Pizza", 12, "Main Course")
 ice_cream = Dish("Ice Cream", 5, "Dessert")
 coffee = Dish("Coffee", 3, "Drink")
